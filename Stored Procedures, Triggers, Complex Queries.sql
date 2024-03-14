@@ -139,6 +139,10 @@ EXEC InsCustomers
 @EmployeeID = '2',
 @NewCustomerID = @NewCustomerID OUTPUT;
 
+SELECT* FROM CUSTOMERS --Check table
+DELETE FROM Customers --Delete the Test record
+WHERE CustomerID = 6; 
+DBCC CHECKIDENT ('Customers', RESEED, 5); --Reset Identity
 
 -- STORED PROCEDURE 2: INSERT NEW ORDER 
 -- Disregard table alterations they are for the other exercise.
