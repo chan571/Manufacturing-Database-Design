@@ -142,7 +142,7 @@ EXEC InsCustomers
 SELECT* FROM CUSTOMERS --Check table
 DELETE FROM Customers --Delete the Test record
 WHERE CustomerID = 6; 
-DBCC CHECKIDENT ('Customers', RESEED, 5); --Reset Identity
+DBCC CHECKIDENT ('CUSTOMERS', RESEED, 5); --Reset Identity
 
 -- STORED PROCEDURE 2: INSERT NEW ORDER 
 -- Disregard table alterations they are for the other exercise.
@@ -187,6 +187,7 @@ AND OrderDate = '2024-03-29'
 AND ExpectedDelivery = '2024-05-01'
 AND DeliveryDate = '2024-04-30'
 AND PaymentTermsID = 2;
+DBCC CHECKIDENT ('ORDERS', RESEED, 5); --Reset Identity
 
 -- COMPUTED COLUMNS 1 : DELIVERY PERFORMANCE
 ALTER TABLE ORDERS ADD DeliveryPerformance AS (DATEDIFF(day, ExpectedDelivery, DeliveryDate))
@@ -285,8 +286,9 @@ GO
 
 -- TEST
 DELETE FROM ORDERS
-WHERE OrderID = 14;
+WHERE OrderID = 6;
 
+DBCC CHECKIDENT ('ORDERS', RESEED, 5); --Reset Identity
 SELECT * FROM PAYMENT_REMINDERS
 
 Reference: https://stackoverflow.com/questions/9996643/sql-server-on-delete-trigger
